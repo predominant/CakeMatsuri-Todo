@@ -1,6 +1,5 @@
 <?php
 class Item extends AppModel {
-	public $name = 'Item';
 	public $validate = array(
 		'list_id' => array(
 			'notempty' => array('rule' => array('notempty')),

@@ -1,6 +1,5 @@
 <?php
 class List extends AppModel {
-	public $name = 'List';
 	public $validate = array(
 		'user_id' => array(
 			'notempty' => array('rule' => array('notempty')),
