@@ -23,6 +23,14 @@ class UserFixture extends CakeTestFixture {
 			'created' => '2009-10-30 12:53:16',
 			'modified' => '2009-10-30 12:53:16'
 		),
+		array(
+			'id' => 'User-2',
+			'username' => 'Lorem ipsum dolor sit amet',
+			'password' => 'Lorem ipsum dolor sit amet',
+			'email' => 'Lorem ipsum dolor sit amet',
+			'created' => '2009-10-30 12:53:16',
+			'modified' => '2009-10-30 12:53:16'
+		),
 	);
 }
 ?>

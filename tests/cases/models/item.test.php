@@ -49,5 +49,20 @@ class ItemTestCase extends CakeTestCase {
 		$this->assertFalse($this->Item->complete(null));
 		$this->assertFalse($this->Item->complete(''));
 	}
+	
+	function testPurgeDeleted() {
+		$item = array(
+			'name' => 'New Item',
+			'completed' => 0);
+		$this->Item->create($item);
+		$this->Item->save();
+		$id = $this->Item->id;
+
+		$count = $this->Item->find('count');
+
+		$this->Item->complete($id);
+		$this->Item->purge();
+		$this->assertEqual($this->Item->find('count'), $count - 1);
+	}
 }
 ?>

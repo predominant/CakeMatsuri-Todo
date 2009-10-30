@@ -31,5 +31,9 @@ class Item extends AppModel {
 		$this->saveField('completed', 1);
 		return true;
 	}
+	
+	public function purge() {
+		$this->deleteAll(array('completed' => 1));
+	}
 }
 ?>
