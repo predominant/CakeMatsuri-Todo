@@ -1,4 +1,3 @@
-<?php $session->flash('auth'); ?>
 <div class="users form">
 <?php echo $form->create('User', array('url' => array('controller' => 'users', 'action' => 'login'
 )));?>

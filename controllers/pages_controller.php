@@ -35,6 +35,11 @@
  * @subpackage    cake.cake.libs.controller
  */
 class PagesController extends AppController {
+	
+	public function beforeFilter() {
+		parent::beforeFilter();
+		$this->Auth->allow('*');
+	}
 
 /**
  * Controller name

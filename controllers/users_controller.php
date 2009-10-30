@@ -4,6 +4,10 @@ class UsersController extends AppController {
 	var $name = 'Users';
 	var $helpers = array('Html', 'Form');
 
+	public function isAuthorized() {
+		return true;
+	}
+	
 	function index() {
 		$this->User->recursive = 0;
 		$this->set('users', $this->paginate());

@@ -15,6 +15,10 @@ class ItemsController extends AppController {
 		// $this->Security->requireLogin();
 	}
 	
+	public function isAuthorized() {
+		return $this->Auth->user('role') == 'admin';
+	}
+	
 	function index() {
 		$this->Item->recursive = 0;
 		$this->set('items', $this->paginate());

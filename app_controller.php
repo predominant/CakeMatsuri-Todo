@@ -37,10 +37,18 @@
  * @subpackage    cake.app
  */
 class AppController extends Controller {
-	public $components = array('Security');
+	public $components = array('Security', 'Auth');
 	
 	public function beforeFilter() {
 		$this->Security->blackHoleCallback = 'securityIssue';
+		
+		// $this->Auth->loginAction = array(
+		//	'controller' => 'users', 'action' => 'login');
+		$this->Auth->loginRedirect = array(
+			'controller' => 'items', 'action' => 'index');
+		$this->Auth->authorize = 'controller';
+		
+		// debug($this->Session->read());
 	}
 	
 	public function securityIssue() {

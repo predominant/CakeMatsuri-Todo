@@ -17,17 +17,18 @@ class UserShell extends Shell {
 		
 		$row = 1;
 		$handle = fopen($file->path, 'r');
+//		$this->User->deleteAll(array());
 		while (($data = fgetcsv($handle, 1000, ',')) !== FALSE) {
 		    $num = count($data);
 			if ($num != 4) {
 				continue;
 			}
-//		    echo "<p> $num fields in line $row: <br /></p>\n";
 		    $row++;
 		
 			$this->User->create(array(
+				'role' => 'user',
 				'username' => $data[1],
-				'password' => Security::hash($data[2]),
+				'password' => Security::hash($data[2], null, true),
 				'email' => $data[3]));
 			if ($this->User->save()) {
 				$this->out('Saved: ' . $data[1]);
