@@ -3,7 +3,20 @@ class ItemsController extends AppController {
 
 	var $name = 'Items';
 	var $helpers = array('Html', 'Form');
+	
+	public function beforeFilter() {
+		parent::beforeFilter();
+		$this->Security->loginOptions = array(
+			'type'=>'basic');
 
+		// $this->Item->ItemList->User->findByHash(..);
+
+		$this->Security->loginUsers = array(
+			'joel' => 'secret', 'graham' => 'password', 'admin' => 'admin');
+		$this->Security->requireLogin();
+		// $this->Security->requirePost('edit');
+	}
+	
 	function index() {
 		$this->Item->recursive = 0;
 		$this->set('items', $this->paginate());

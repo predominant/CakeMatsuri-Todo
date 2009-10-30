@@ -37,5 +37,14 @@
  * @subpackage    cake.app
  */
 class AppController extends Controller {
+	public $components = array('Security');
+	
+	public function beforeFilter() {
+		$this->Security->blackHoleCallback = 'securityIssue';
+	}
+	
+	public function securityIssue() {
+		die('You cant hack us.');
+	}
 }
 ?>
