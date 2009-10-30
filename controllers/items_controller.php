@@ -1,7 +1,6 @@
 <?php
 class ItemsController extends AppController {
 
-	var $name = 'Items';
 	var $helpers = array('Html', 'Form');
 	
 	public function beforeFilter() {
@@ -9,12 +8,9 @@ class ItemsController extends AppController {
 		$this->Security->loginOptions = array(
 			'type'=>'basic');
 
-		// $this->Item->ItemList->User->findByHash(..);
-
 		$this->Security->loginUsers = array(
 			'joel' => 'secret', 'graham' => 'password', 'admin' => 'admin');
 		$this->Security->requireLogin();
-		// $this->Security->requirePost('edit');
 	}
 	
 	function index() {
