@@ -3,14 +3,16 @@ class ItemsController extends AppController {
 
 	var $helpers = array('Html', 'Form');
 	
+	var $components = array('Auth');
+	
 	public function beforeFilter() {
 		parent::beforeFilter();
-		$this->Security->loginOptions = array(
-			'type'=>'basic');
-
-		$this->Security->loginUsers = array(
-			'joel' => 'secret', 'graham' => 'password', 'admin' => 'admin');
-		$this->Security->requireLogin();
+		// $this->Security->loginOptions = array(
+		// 	'type'=>'basic');
+		// 
+		// $this->Security->loginUsers = array(
+		// 	'joel' => 'secret', 'graham' => 'password', 'admin' => 'admin');
+		// $this->Security->requireLogin();
 	}
 	
 	function index() {
