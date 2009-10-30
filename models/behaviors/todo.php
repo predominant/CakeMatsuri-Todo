@@ -17,12 +17,12 @@ class TodoBehavior extends ModelBehavior {
 		}
 		
 		$Model->read(null, $id);
-		$Model->saveField('completed', 1);
+		$Model->saveField($this->__settings[$Model->alias]['completed'], 1);
 		return true;
 	}
 	
 	public function purge($Model) {
-		$Model->deleteAll(array('completed' => 1));
+		$Model->deleteAll(array($this->__settings[$Model->alias]['completed'] => 1));
 	}
 }
 ?>
