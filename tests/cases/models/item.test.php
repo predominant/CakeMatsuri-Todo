@@ -28,5 +28,21 @@ class ItemTestCase extends CakeTestCase {
 		// Actual Test
 		$this->assertTrue($count == $newCount - 1);
 	}
+	
+	function testCompleteItem() {
+		$item = array('name' => 'Something to do');
+		$this->Item->create($item);
+		$this->Item->save();
+		$id = $this->Item->id;
+		$this->Item->create();
+
+		$item = $this->Item->read(null, $id);
+		$this->assertTrue($item['Item']['complete'] == 0);
+
+		$this->Item->complete($id);
+		$item = $this->Item->read(null, $id);
+		$this->assertTrue($item['Item']['complete'] == 1);
+		
+	}
 }
 ?>
