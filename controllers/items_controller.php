@@ -14,7 +14,7 @@ class ItemsController extends AppController {
 			$this->Session->setFlash(__('Invalid item', true));
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->set('item', $this->Item->read(null, $id));
+		$this->set('item', $this->Item->findCached($id));
 	}
 
 	function add() {

@@ -23,5 +23,42 @@ class Item extends AppModel {
 			'order' => ''
 		)
 	);
+	
+	public function findCached($id, $force = false) {
+		$key = $this->_key($id);
+		
+		if (!$force) {
+			$cache = Cache::read($key);	
+			
+			if (!empty($cache)) { 
+				return $cache;
+			}
+		
+		}
+		$result = $this->find(
+			'first',
+			array(
+				'conditions' => array(
+					$this->alias . '.' . $this->primaryKey => $id)));
+					
+		Cache::write($key, $result);
+		
+		return $result;
+	}
+	
+	public function save($data, $validate = true, $fieldList = false) {
+		$saved = parent::save($data, $validate, $fieldList);
+		
+		if ($saved) {
+			Cache::delete($this->_key($this->id));
+			$this->findCached($this->id, true);
+		}
+		
+		return $saved;
+	}
+	
+	protected function _key($id) {
+		return $id;
+	}
 }
 ?>

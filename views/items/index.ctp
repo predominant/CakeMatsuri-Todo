@@ -32,7 +32,7 @@ foreach ($items as $item):
 			<?php echo $html->link($item['ItemList']['name'], array('controller' => 'item_lists', 'action' => 'view', $item['ItemList']['id'])); ?>
 		</td>
 		<td>
-			<?php echo $item['Item']['name']; ?>
+			<?php echo htmlentities($item['Item']['name']); ?>
 		</td>
 		<td>
 			<?php echo $item['Item']['completed']; ?>
