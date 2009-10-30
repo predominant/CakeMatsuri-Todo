@@ -1,4 +1,8 @@
 <?php
+/**
+ * Todo Behavior
+ *
+ */
 class TodoBehavior extends ModelBehavior {
 	private $__default = array(
 		'completed' => 'completed');
@@ -15,14 +19,21 @@ class TodoBehavior extends ModelBehavior {
 		if (empty($id) || !$Model->exists($id)) {
 			return false;
 		}
-		
-		$Model->read(null, $id);
+
+		$item = $Model->find(
+			'first',
+			array(
+				'fields' => array($Model->primaryKey),
+				'conditions' => array($Model->primaryKey => $id)));
+		$Model->id = $item[$Model->alias][$Model->primaryKey];
 		$Model->saveField($this->__settings[$Model->alias]['completed'], 1);
 		return true;
 	}
 	
 	public function purge($Model) {
-		$Model->deleteAll(array($this->__settings[$Model->alias]['completed'] => 1));
+		return $Model->deleteAll(array(
+			$this->__settings[$Model->alias]['completed'] => 1
+		));
 	}
 }
 ?>
