@@ -37,12 +37,17 @@ class ItemTestCase extends CakeTestCase {
 		$this->Item->create();
 
 		$item = $this->Item->read(null, $id);
-		$this->assertTrue($item['Item']['complete'] == 0);
+		$this->assertTrue($item['Item']['completed'] == 0);
 
 		$this->Item->complete($id);
 		$item = $this->Item->read(null, $id);
-		$this->assertTrue($item['Item']['complete'] == 1);
-		
+		$this->assertTrue($item['Item']['completed'] == 1);
+	}
+	
+	function testCompleteItemEmptyId() {
+		$this->assertFalse($this->Item->complete());
+		$this->assertFalse($this->Item->complete(null));
+		$this->assertFalse($this->Item->complete(''));
 	}
 }
 ?>
