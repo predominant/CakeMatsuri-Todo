@@ -1,7 +1,7 @@
 <?php
 class Item extends AppModel {
 	public $validate = array(
-		'list_id' => array(
+		'item_list_id' => array(
 			'notempty' => array('rule' => array('notempty')),
 		),
 		'name' => array(
@@ -13,9 +13,9 @@ class Item extends AppModel {
 	);
 
 	public $belongsTo = array(
-		'List' => array(
-			'className' => 'List',
-			'foreignKey' => 'list_id',
+		'ItemList' => array(
+			'className' => 'ItemList',
+			'foreignKey' => 'item_list_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''

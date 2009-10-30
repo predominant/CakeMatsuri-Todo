@@ -13,8 +13,8 @@ class User extends AppModel {
 	);
 	
 	public $hasMany = array(
-		'List' => array(
-			'className' => 'List',
+		'ItemList' => array(
+			'className' => 'ItemList',
 			'foreignKey' => 'user_id',
 			'dependent' => false,
 			'conditions' => '',

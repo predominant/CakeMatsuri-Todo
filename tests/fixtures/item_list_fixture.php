@@ -1,7 +1,6 @@
 <?php
-/* List Fixture generated on: 2009-10-30 12:10:01 : 1256867461 */
-class ListFixture extends CakeTestFixture {
-	var $name = 'List';
+class ItemListFixture extends CakeTestFixture {
+	var $name = 'ItemList';
 
 	var $fields = array(
 		'id' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 36, 'key' => 'primary', 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
@@ -15,14 +14,14 @@ class ListFixture extends CakeTestFixture {
 
 	var $records = array(
 		array(
-			'id' => 'List-1',
+			'id' => 'ItemList-1',
 			'user_id' => 'User-1',
 			'name' => 'Lorem ipsum dolor sit amet',
 			'created' => '2009-10-30 12:51:01',
 			'modified' => '2009-10-30 12:51:01'
 		),
 		array(
-			'id' => 'List-2',
+			'id' => 'ItemList-2',
 			'user_id' => 'User-1',
 			'name' => 'Lorem ipsum dolor sit amet',
 			'created' => '2009-10-30 12:51:01',

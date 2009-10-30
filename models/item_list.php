@@ -1,5 +1,5 @@
 <?php
-class List extends AppModel {
+class ItemList extends AppModel {
 	public $validate = array(
 		'user_id' => array(
 			'notempty' => array('rule' => array('notempty')),
@@ -22,7 +22,7 @@ class List extends AppModel {
 	public $hasMany = array(
 		'Item' => array(
 			'className' => 'Item',
-			'foreignKey' => 'list_id',
+			'foreignKey' => 'item_list_id',
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',
